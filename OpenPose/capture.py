@@ -23,7 +23,7 @@ for i in range(ramp_frames):
 print("Taking image...")
 # Take the actual image we want to keep
 camera_capture = get_image()
-file = "D:\github folder\Yoga-Posture - Copy\OpenPose/new_image.jpeg"
+file = "D:/github folder/Yoga-Posture/OpenPose/new_image.jpeg"
 # A nice feature of the imwrite method is that it will automatically choose the
 # correct format based on the file extension you provide. Convenient!
 cv2.imwrite(file, camera_capture)

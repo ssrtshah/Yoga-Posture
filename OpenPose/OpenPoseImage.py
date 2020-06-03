@@ -17,7 +17,7 @@ elif MODE is "MPI" :
     POSE_PAIRS = [[0,1], [1,2], [2,3], [3,4], [1,5], [5,6], [6,7], [1,14], [14,8], [8,9], [9,10], [14,11], [11,12], [12,13] ]
 
 
-frame = cv2.imread("single.jpeg")
+frame = cv2.imread("new_image.jpeg")
 frameCopy = np.copy(frame)
 frameWidth = frame.shape[1]
 frameHeight = frame.shape[0]

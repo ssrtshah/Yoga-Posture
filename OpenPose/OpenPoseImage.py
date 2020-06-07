@@ -75,15 +75,16 @@ def OpenImage(anglearr,ifile,ofile1,ofile2):
 		if points[p1] and points[p2] and points[p3]:
 			x = ag.getAngle(points[p1],points[p2],points[p3])
 			anglearr.append(x)
+		else:
+			nullval=0
+			anglearr.append(nullval)
 
 
-	#cv2.imshow('Output-Keypoints', frameCopy)
-	#cv2.imshow('Output-Skeleton', frame)
+	cv2.imshow('Output-Keypoints', frameCopy)
+	cv2.imshow('Output-Skeleton', frame)
 
 
 	cv2.imwrite(ofile1, frameCopy)
 	cv2.imwrite(ofile2, frame)
 
 	print("Total time taken : {:.3f}".format(time.time() - t))
-
-	#cv2.waitKey(0)

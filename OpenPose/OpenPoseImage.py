@@ -9,7 +9,7 @@ def OpenImage(anglearr,ifile,ofile1,ofile2):
 	nPoints = 15
 	POSE_PAIRS = [[0,1], [1,2], [2,3], [3,4], [1,5], [5,6], [6,7], [1,14], [14,8], [8,9], [9,10], [14,11], [11,12], [12,13] ]
 
-	ANGLE_POINTS = [[0,1,2],[1,2,3],[2,3,4],[0,1,5],[1,5,6],[5,6,7],[2,1,14],[1,14,8],[1,14,11],[14,8,9],[8,9,10],[14,11,12],[11,12,13]]
+	ANGLE_POINTS = [[0,1,2],[1,2,3],[2,3,4],[0,1,5],[1,5,6],[5,6,7],[2,1,14],[1,14,8],[1,14,11],[14,8,9],[8,9,10],[14,11,12],[11,12,13],[10,14,13]]
 
 	frame = cv2.imread(ifile)
 	frameCopy = np.copy(frame)
@@ -80,8 +80,8 @@ def OpenImage(anglearr,ifile,ofile1,ofile2):
 			anglearr.append(nullval)
 
 
-	cv2.imshow('Output-Keypoints', frameCopy)
-	cv2.imshow('Output-Skeleton', frame)
+	#cv2.imshow('Output-Keypoints', frameCopy)
+	#cv2.imshow('Output-Skeleton', frame)
 
 
 	cv2.imwrite(ofile1, frameCopy)

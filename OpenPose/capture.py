@@ -21,7 +21,7 @@ def captureImage():
 	# to adjust light levels, if necessary
 	for i in range(ramp_frames):
 	 temp = get_image()
-	print("Taking image...")
+	#print("Taking image...")
 	# Take the actual image we want to keep
 	camera_capture = get_image()
 	file = "new_image.jpg"

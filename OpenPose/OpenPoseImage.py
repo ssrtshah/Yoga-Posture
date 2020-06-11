@@ -29,7 +29,7 @@ def OpenImage(anglearr,ifile,ofile1,ofile2):
 	net.setInput(inpBlob)
 
 	output = net.forward()
-	print("time taken by network : {:.3f}".format(time.time() - t))
+	#print("time taken by network : {:.3f}".format(time.time() - t))
 
 	H = output.shape[2]
 	W = output.shape[3]
@@ -80,11 +80,11 @@ def OpenImage(anglearr,ifile,ofile1,ofile2):
 			anglearr.append(nullval)
 
 
-	#cv2.imshow('Output-Keypoints', frameCopy)
-	#cv2.imshow('Output-Skeleton', frame)
+	cv2.imshow('Output-Keypoints', frameCopy)
+	cv2.imshow('Output-Skeleton', frame)
 
 
 	cv2.imwrite(ofile1, frameCopy)
 	cv2.imwrite(ofile2, frame)
 
-	print("Total time taken : {:.3f}".format(time.time() - t))
+	#print("Total time taken : {:.3f}".format(time.time() - t))

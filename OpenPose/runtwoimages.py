@@ -1,20 +1,16 @@
 import OpenPoseImage as opi
 import capture
-import pymongo
 import time
 import finderror as fe
 import getvalues as gv
-import os
-import shutil
 
 
-o1=[]
+'''o1=[]
 o2=[]
 diff1=[]
-diff2=[]
+diff2=[]'''
 asana='vidharbhasana'
 avg=0
-accuracy=8
 
 '''angle_list={'vidharbhasana':[259.2581864991609, 200.6668284692978, 188.65104796437717, 121.08028572315077, 161.62831342275172, 171.9052149822932, 289.13753117352195, 202.34131675883563, 153.86078929933709, 229.2842910732751, 111.67520468698005, 165.84745615332864, 173.18623633463903, 287.01669700208566],
 				'adhomukhashavasana':[0, 79.50852298766841, 173.9275435927923, 0, 0, 0, 71.18287265724155, 207.1255354890795, 196.60154315750205, 64.54901881628368, 0, 69.69999837023524, 177.9878653347631, 0],
@@ -23,9 +19,7 @@ accuracy=8
 
 '''o2=angle_list[asana]'''
 
-o2=gv.getvalues(asana)
-shutil.copy2('Output-Skeleton - Copy.jpg', 'Output-Skeleton.jpg')
-os.startfile("Output-Skeleton.jpg")
+
 
 
 def TakeAndCompare():
@@ -58,10 +52,8 @@ print(diff1)
 print(diff2)
 print(avg)'''
 
-while(avg>accuracy):
-	a=max(diff1[2],diff1[5],diff1[10],diff1[12],diff1[1],diff1[4],diff1[13])
-	x=diff1.index(a)
-	movement = fe.finderror(o2,x,diff2,)
+while(avg>9):
+	movement = fe.finderror(o1,diff1,diff2)
 	print('\n'+movement+'\n')
 	o1,avg,diff1,diff2=TakeAndCompare()
 	#print(o1)
@@ -70,4 +62,3 @@ while(avg>accuracy):
 	#print(diff2)
 	#print(avg)
 
-os.remove('Output-Skeleton.jpg')

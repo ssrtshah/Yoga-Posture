@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/UpdateWeight')
 def changeweight():
-    userID = int(request.args.get('userid')) #change the key according to front end
+    userID = int(request.args.get('userid')) 
     newWeight = int(request.args.get('weight'))
     db.updateWeight(userID , newWeight)
     return 'Weight updated successfully'

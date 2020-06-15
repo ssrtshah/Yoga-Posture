@@ -17,7 +17,7 @@ Future Getdata(url) async{
 import 'api.dart';
 import 'dart:convert'
 
-url = 'http://http://127.0.0.1:5000'
+url = 'http://127.0.0.1:5000'
 (for whichever image they choose, append /getvalue and pass asana name as query(+'/getvalue'+asana.tostring()))
 
 wherever they tap

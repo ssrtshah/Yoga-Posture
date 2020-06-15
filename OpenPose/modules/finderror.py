@@ -1,4 +1,4 @@
-import variables as v
+import modules.variables as v
 
 def finderror():
 	diff1=v.diff1

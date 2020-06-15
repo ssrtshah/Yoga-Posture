@@ -1,6 +1,6 @@
 import runmain as rm
 
-rm.getvaluesfromdb('vidharbhasana')
-rm.takeAndCompare('new_image.jpg')
+rm.getvaluesfromdb('Vidharbhasana')
+rm.takeAndCompare()
 rm.findingerror()
 

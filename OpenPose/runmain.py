@@ -1,8 +1,8 @@
-import OpenPoseImage as opi
-import capture
-import finderror as fe
-import variables as v
-import getvalues as gv
+import modules.OpenPoseImage as opi
+import modules.finderror as fe
+import modules.variables as v
+import modules.getvalues as gv
+import modules.getimage as gi
 
 
 def getvaluesfromdb(asananame):
@@ -10,7 +10,7 @@ def getvaluesfromdb(asananame):
 	v.o2=gv.getvalues(asananame)
 
 
-def takeAndCompare(imagename):
+def takeAndCompare():
 	o1=[]
 	diff1=[]
 	diff2=[]
@@ -18,11 +18,13 @@ def takeAndCompare(imagename):
 
 	asana=v.asananame
 	count=0
-	imagefile=imagename
+	#imagefile=str(imagename)
 
-	capture.captureImage()
+	#storage.child(imagefile).download("new_image.jpg")
 
-	opi.OpenImage(o1,imagefile,"Output-Keypoints.jpg","Output-Skeleton.jpg")
+	#capture.captureImage()
+
+	opi.OpenImage(o1,"new_image.jpg","Output-Keypoints.jpg","Output-Skeleton.jpg")
 
 	for i in range(len(o1)):
 		if o1[i]!=0 and o2[i]!=0:

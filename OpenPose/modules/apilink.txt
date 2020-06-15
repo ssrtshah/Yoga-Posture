@@ -29,3 +29,10 @@ on tap: ()async{
 	});
 }
 (initialize Data,QueryText in the beginning)
+
+
+
+
+install python_jwt
+install sseclient
+install Crypto(in this, it might get saved as crypto and the subfolders will also have small letters, change the first letter to caps and publickey-PublicKey)

@@ -4,14 +4,14 @@ import firebase
 
 
 config = {
-  	'apiKey': "AIzaSyCMspprnQ4tOwDHL-DBhqhdkX8xM8SwOqU",
-    'authDomain': "yoga-posture-e5cdb.firebaseapp.com",
-    'databaseURL': "https://yoga-posture-e5cdb.firebaseio.com",
-    'projectId': "yoga-posture-e5cdb",
-    'storageBucket': "yoga-posture-e5cdb.appspot.com",
-    'messagingSenderId': "649842810638",
-    'appId': "1:649842810638:web:7c45a9b58c8a92dfb9815f",
-    'measurementId': "G-N6574YK0PW"
+  	'apiKey': "AIzaSyBdU-_imb_PeInxnppFfzi-eoLqp7icRmY",
+    'authDomain': "yogi-35620.firebaseapp.com",
+    'databaseURL': "https://yogi-35620.firebaseio.com",
+    'projectId': "yogi-35620",
+    'storageBucket': "yogi-35620.appspot.com",
+    'messagingSenderId': "476545567005",
+    'appId': "1:476545567005:web:3c2ffc9d0248d53aa4f9f4",
+    'measurementId': "G-VJ2RRSM282"
 }
 
 fb = firebase.Firebase(config)

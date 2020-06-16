@@ -9,48 +9,48 @@ def finderror():
 	
 	if(x==2):
 		if(o2[x]>170 and o2[x]<190):
-			return "straighten right elbow"
+			return "1"
 		else:
 			if((o2[x]>180 and diff2[x]>0) or (o2[x]<180 and diff2[x]<0)):
-				return "straighten right elbow"
+				return "1"
 			else:
-				return "bend right elbow"
+				return "2"
 	elif(x==5):
 		if(o2[x]>170 and o2[x]<190):
-			return "straighten left elbow"
+			return "3"
 		else:
 			if((o2[x]>180 and diff2[x]>0) or (o2[x]<180 and diff2[x]<0)):
-				return "straighten left elbow"
+				return "3"
 			else:
-				return "bend left elbow"
+				return "4"
 	elif(x==10):
 		if(o2[x]>170 and o2[x]<190):
-			return "straighten right knee"
+			return "5"
 		else:
 			if((o2[x]>180 and diff2[x]>0) or (o2[x]<180 and diff2[x]<0)):
-				return "straighten right knee"
+				return "5"
 			else:
-				return "bend right knee"
+				return "6"
 	elif(x==12):
 		if(o2[x]>170 and o2[x]<190):
-			return "straighten left knee"
+			return "7"
 		else:
 			if((o2[x]>180 and diff2[x]>0) or (o2[x]<180 and diff2[x]<0)):
-				return "straighten left knee"
+				return "7"
 			else:
-				return "bend left knee"
+				return "8"
 	elif(x==1):
 		if(diff2[x]<0):
-			return "drop right hand"
+			return "9"
 		else:
-			return "lift right hand"
+			return "20"
 	elif(x==4):
 		if(diff2[x]<0):
-			return "drop left hand"
+			return "11"
 		else:
-			return "lift left hand"
+			return "12"
 	elif(x==13):
 		if((o2[x]>180 and diff2[x]>0) or (o2[x]<180 and diff2[x]<0)):
-			return "widen your stance"
+			return "13"
 		else:
-			return "bring your feet closer too each other"
+			return "14"

@@ -74,6 +74,8 @@ def OpenImage(anglearr,ifile,ofile1,ofile2):
 
 		if points[p1] and points[p2] and points[p3]:
 			x = ag.getAngle(points[p1],points[p2],points[p3])
+			if angle==13 and x>180:
+				x=360-x
 			anglearr.append(x)
 		else:
 			nullval=0

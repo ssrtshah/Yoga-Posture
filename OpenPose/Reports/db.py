@@ -15,6 +15,15 @@ def userReport(userid):
             pass
     return data
 
+def prevUserReport(userid , month):
+    myuser = { "user_id" :userid}
+    for x in mycol.find( {"user_id":userid} , {"month_record":1,"_id":0} ):
+        pass
+    for y in x.values():
+        pass
+    data = y["{}".format(month)]
+    return data
+
 def newUser(userid , weight):
     day=date.today().day
     month=date.today().month
@@ -48,8 +57,8 @@ def updateUserActivity(userid , minutes):
         pass
     x.clear()
 
-    d=date.today()    
-    if (sm==d.month or (sm!=d.month and d.date<sd)) :
+    d=date.today()   
+    if (sm==d.month or (sm!=d.month and d.day<sd)) :
         #date
         d=date.today()
         dd="{}/{}/{}".format(d.day,d.month,d.year)
@@ -111,6 +120,22 @@ def updateUserActivity(userid , minutes):
         x.clear()
         
     else:
+        i=1
+        for x in mycol.find( {"user_id":userid} , {"date":1, "minutes":1, "cal_burnt":1,"total_min":1,"total_cal":1,"_id":0} ):
+            pass
+        for y in  mycol.find( {"user_id":userid}, {"month_record":1,"_id":0}):
+            pass
+        for z in y.values():
+            pass
+        for z1 in z.values():
+            i=i+1
+        z.update({"{}".format(i) :x})
+        newquery = { "$set": { "month_record":z} }
+        mycol.update_one(myuser,newquery)
+        x.clear()
+        y.clear()
+        z.clear()
+
         entity_no = 1
         add_cal = add_min = 0
         d=date.today()
@@ -143,4 +168,18 @@ def updateUserActivity(userid , minutes):
                         } }
         mycol.update_one(myuser,newquery)
         
-        
+def resetReport(userid):
+    myuser = { "user_id" :userid}
+    d=date.today()
+    newquery = { "$set": { 
+                                "start_date":d.day, 
+                                "start_month":d.month,
+                                "date":{} , 
+                                "minutes":{} ,
+                                "cal_burnt":{} ,
+                                "total_min":0 , 
+                                "total_cal":0,
+                                "minutes_whole":0,
+                                "calories_whole":0
+                        } }
+    mycol.update_one(myuser,newquery)

@@ -17,6 +17,7 @@ def userReport(userid):
 
 def prevUserReport(userid , month):
     myuser = { "user_id" :userid}
+
     for x in mycol.find( {"user_id":userid} , {"month_record":1,"_id":0} ):
         pass
     for y in x.values():
@@ -38,7 +39,8 @@ def newUser(userid , weight):
             "total_min":0 , 
             "total_cal":0,
             "minutes_whole":0,
-            "calories_whole":0
+            "calories_whole":0 ,
+            "month_record":{}
             }
     mycol.insert_one(myquery)    
 
@@ -59,47 +61,79 @@ def updateUserActivity(userid , minutes):
 
     d=date.today()   
     if (sm==d.month or (sm!=d.month and d.day<sd)) :
-        #date
+        i=1
         d=date.today()
-        dd="{}/{}/{}".format(d.day,d.month,d.year)
         for x in mycol.find( {"user_id":userid} , {"date":1,"_id":0} ):
             pass
         for y in x.values():
             pass
         for z in y.values():
-            entity_no = entity_no + 1
-        y.update({"{}".format(entity_no) :dd})
-        newquery = { "$set": { "date":y} }
-        mycol.update_one(myuser,newquery)
-        x.clear()
-        y.clear()
+            i=i+1
+        if i!=1 and int(z[0:2]) == d.day :
+            #minutes
+            for x in mycol.find( {"user_id":userid} , {"minutes":1,"_id":0} ):
+                pass
+            for y in x.values():
+                pass
+            z=y[str(i-1)]
+            y.update({"{}".format(i-1) :minutes+z})
+            newquery = { "$set": { "minutes":y} }
+            mycol.update_one(myuser,newquery)
+            x.clear()
+            
+            #cal_burnt
+            for x in mycol.find( {"user_id":userid} , {"cur_weight":1,"_id":0} ):
+                pass
+            for w in x.values():
+                pass
+            hr = minutes/60
+            cal = 3.3*w*hr
+            x.clear()
+            for x in mycol.find( {"user_id":userid} , {"cal_burnt":1,"_id":0} ):
+                pass
+            for y in x.values():
+                pass
+            z=y[str(i-1)]
+            y.update({"{}".format(i-1) :cal+z})
+            newquery = { "$set": { "cal_burnt":y} }
+            mycol.update_one(myuser,newquery)
+            x.clear()
+            
+        else:
+            #date
+            dd="{}/{}/{}".format(d.day,d.month,d.year)
+            #print(y)
+            y.update({"{}".format(i) :dd})
+            newquery = { "$set": { "date":y} }
+            mycol.update_one(myuser,newquery)
+            x.clear()
+            y.clear()
         
-        #minutes
-        for x in mycol.find( {"user_id":userid} , {"minutes":1,"_id":0} ):
-            pass
-        for y in x.values():
-            pass
-        y.update({"{}".format(entity_no) :minutes})
-        newquery = { "$set": { "minutes":y} }
-        mycol.update_one(myuser,newquery)
-        x.clear()
-        
-        #cur_weight
-        for x in mycol.find( {"user_id":userid} , {"cur_weight":1,"_id":0} ):
-            pass
-        for w in x.values():
-            pass
-        hour = minutes/60
-        cal = 3.3*w*hour
-        x.clear()
-        for x in mycol.find( {"user_id":userid} , {"cal_burnt":1,"_id":0} ):
-            pass
-        for y in x.values():
-            pass
-        y.update({"{}".format(entity_no) :cal})
-        newquery = { "$set": { "cal_burnt":y} }
-        mycol.update_one(myuser,newquery)
-        x.clear()
+            #minutes
+            for x in mycol.find( {"user_id":userid} , {"minutes":1,"_id":0} ):
+                pass
+            for y in x.values():
+                pass
+            y.update({"{}".format(i) :minutes})
+            newquery = { "$set": { "minutes":y} }
+            mycol.update_one(myuser,newquery)
+            x.clear()
+            
+            #cal_burnt
+            for x in mycol.find( {"user_id":userid} , {"cur_weight":1,"_id":0} ):
+                pass
+            for w in x.values():
+                pass
+            hr = minutes/60
+            cal = 3.3*w*hr
+            for x in mycol.find( {"user_id":userid} , {"cal_burnt":1,"_id":0} ):
+                pass
+            for y in x.values():
+                pass
+            y.update({"{}".format(i) :cal})
+            newquery = { "$set": { "cal_burnt":y} }
+            mycol.update_one(myuser,newquery)
+            x.clear()
             
         #total_min
         for x in mycol.find( {"user_id":userid} , {"total_min":1,"_id":0} ):
@@ -109,7 +143,7 @@ def updateUserActivity(userid , minutes):
         newquery = { "$set": { "total_min": tm+minutes} }
         mycol.update_one(myuser,newquery)
         x.clear()
-            
+             
         #total_cal
         for x in mycol.find( {"user_id":userid} , {"total_cal":1,"_id":0} ):
             pass
@@ -117,7 +151,8 @@ def updateUserActivity(userid , minutes):
             pass
         newquery = { "$set": { "total_cal": tc+cal} }
         mycol.update_one(myuser,newquery)
-        x.clear()
+        x.clear() 
+        
         
     else:
         i=1
@@ -146,7 +181,7 @@ def updateUserActivity(userid , minutes):
         hour = minutes/60
         cal = 3.3*w*hour
         dd="{}/{}/{}".format(d.day,d.month,d.year)
-        for x in mycol.find( {"user_id":userid} , {"total_cal":1,"caloies_whole":1,"_id":0} ):
+        for x in mycol.find( {"user_id":userid} , {"total_cal":1,"calories_whole":1,"_id":0} ):
             pass
         for ct in x.values():
             add_cal = add_cal + ct
@@ -180,6 +215,7 @@ def resetReport(userid):
                                 "total_min":0 , 
                                 "total_cal":0,
                                 "minutes_whole":0,
-                                "calories_whole":0
+                                "calories_whole":0,
+                                "month_record":{}
                         } }
     mycol.update_one(myuser,newquery)

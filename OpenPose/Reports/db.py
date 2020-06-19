@@ -15,7 +15,7 @@ def userReport(userid):
         pass
     final = []
     for i in range(1 , len(dic['date'])+1):
-        final.append({"Date":dic['date']['{}'.format(i)], "Duration":dic['minutes']['{}'.format(i)] , "Calories":dic['cal_burnt']['{}'.format(i)]})
+        final.append({"Date":str(dic['date']['{}'.format(i)]), "Duration":str(dic['minutes']['{}'.format(i)]), "Calories":str(dic['cal_burnt']['{}'.format(i)])})
     return final
 
 def prevUserReport(userid , month):
@@ -27,7 +27,8 @@ def prevUserReport(userid , month):
     dic = y["{}".format(month)]
     final = []
     for i in range(1 , len(dic['date'])+1):
-        final.append({"Date":dic['date']['{}'.format(i)], "Duration":dic['minutes']['{}'.format(i)] , "Calories":dic['cal_burnt']['{}'.format(i)]})
+        final.append({"Date":str(dic['date']['{}'.format(i)]), "Duration":str(dic['minutes']['{}'.format(i)] ), "Calories":str(dic['cal_burnt']['{}'.format(i)])})
+    
     return final
 
 def newUser(userid , weight):

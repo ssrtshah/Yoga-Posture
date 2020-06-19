@@ -1,7 +1,8 @@
-from flask import Flask , request
+from flask import Flask , request , render_template , jsonify
 import db
 
 app = Flask(__name__)
+
 
 @app.route('/UpdateWeight')
 def changeweight():
@@ -13,15 +14,13 @@ def changeweight():
 @app.route('/userReport')
 def generateReport():
     userID = request.args.get('userid')
-    print( db.userReport(userID))
-    return db.userReport(userID)
+    return jsonify(db.userReport(userID))
 
 @app.route('/prevUserReport')
 def generatePrevReport():
     userID = request.args.get('userid')
     month = int(request.args.get('month'))
-    print( db.prevUserReport(userID , month))
-    return db.prevUserReport(userID , month)
+    return jsonify(db.prevUserReport(userID , month))
 
 
 @app.route('/updateActivity')
@@ -48,4 +47,3 @@ def reset():
 
 if __name__ == "__main__":
     app.run(debug = True)
-

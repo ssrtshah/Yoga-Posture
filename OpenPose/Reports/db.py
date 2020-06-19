@@ -11,19 +11,24 @@ def updateWeight(userid , new_weight):
     mycol.update_one(myuser,newquery)
 
 def userReport(userid):
-    for data in mycol.find( {"user_id":userid} , {"date":1 , "minutes":1 , "cal_burnt":1 , "total_min":1 ,  "total_cal":1 , "minutes_whole":1 , "calories_whole":1 , "_id":0} ):
-            pass
-    return data
+    for dic in mycol.find( {"user_id":userid} , {"date":1 , "minutes":1 , "cal_burnt":1 ,"_id":0} ):
+        pass
+    final = []
+    for i in range(1 , len(dic['date'])+1):
+        final.append({"Date":dic['date']['{}'.format(i)], "Duration":dic['minutes']['{}'.format(i)] , "Calories":dic['cal_burnt']['{}'.format(i)]})
+    return final
 
 def prevUserReport(userid , month):
     myuser = { "user_id" :userid}
-
     for x in mycol.find( {"user_id":userid} , {"month_record":1,"_id":0} ):
         pass
     for y in x.values():
         pass
-    data = y["{}".format(month)]
-    return data
+    dic = y["{}".format(month)]
+    final = []
+    for i in range(1 , len(dic['date'])+1):
+        final.append({"Date":dic['date']['{}'.format(i)], "Duration":dic['minutes']['{}'.format(i)] , "Calories":dic['cal_burnt']['{}'.format(i)]})
+    return final
 
 def newUser(userid , weight):
     day=date.today().day
@@ -156,7 +161,8 @@ def updateUserActivity(userid , minutes):
         
     else:
         i=1
-        for x in mycol.find( {"user_id":userid} , {"date":1, "minutes":1, "cal_burnt":1,"total_min":1,"total_cal":1,"_id":0} ):
+        #for x in mycol.find( {"user_id":userid} , {"date":1, "minutes":1, "cal_burnt":1,"total_min":1,"total_cal":1,"_id":0} ):
+        for x in mycol.find( {"user_id":userid} , {"date":1, "minutes":1, "cal_burnt":1,"_id":0} ):
             pass
         for y in  mycol.find( {"user_id":userid}, {"month_record":1,"_id":0}):
             pass

@@ -45,7 +45,7 @@ def finderror():
 			else:
 				return "8"
 	elif(x==1):
-		if(diff2[x]<0):
+		if(diff2[x]>0):
 			return "9"
 		else:
 			return "10"

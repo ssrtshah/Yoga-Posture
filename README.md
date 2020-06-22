@@ -5,6 +5,7 @@ http://posefs1.perception.cs.cmu.edu/OpenPose/models/pose/mpi/pose_iter_160000.c
 
 Modules to install:
 opencv-python, dnspython, python-jwt, sseclient, requests-toolbelt, pycryptodome, pymongo
+(If you get an error saying Crpto module not found, go to the location where crpto module is installed and change the name of the folder and all subfolder with the first letter ad capital ie. crypto=>Crypto, math=>Math etc) 
 
 
 To test only the backend code with image from webcam, run tester1.py. It will capture an image from the webcam of the computer/laptop and compare it to the Virabhdrasana pose.

@@ -8,7 +8,6 @@ Modules required:
 opencv-python, dnspython, python-jwt, sseclient, requests-toolbelt, pycryptodome, pymongo
 (If you get an error saying Crpto module not found, go to the location where crpto module is installed and change the name of the folder and all subfolder with the first letter ad capital ie. crypto=>Crypto, math=>Math etc) 
 
-eg.
 ```
 pip install opencv-python
 pip install dnspython

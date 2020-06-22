@@ -25,3 +25,7 @@ To run the code from frontend, run api.py, calls will be made to the backend fro
 ```
 python api.py
 ```
+git clone the [Frontend repository](https://github.com/LekhaKarthik/yogi-app) using the following command:
+```
+git clone https://github.com/LekhaKarthik/yogi-app
+```

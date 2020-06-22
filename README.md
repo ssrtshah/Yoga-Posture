@@ -9,6 +9,7 @@ opencv-python, dnspython, python-jwt, sseclient, requests-toolbelt, pycryptodome
 
 
 To test only the backend code with image from webcam, run tester1.py. It will capture an image from the webcam of the computer/laptop and compare it to the Virabhdrasana pose.
+
 To test the backend code with pre-existing image, run tester2.py and change the path of input image to the desired image.
 
 To run the code from frontend, run api.py, calls will be made to the backend from the frontend itself.

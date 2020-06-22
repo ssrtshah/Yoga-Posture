@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<<device-width>>, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <label>ID : </label><input type="text" id = "usrid">
+    <label> Enter Weight : </label><input type="text" id = "userWeight">
+    <label> Enter Miniutes</label><input type = "text" id = "userMin"><br><br>
+    <label> Enter Month</label><input type = "text" id = "prevMonth"><br><br>
+    <input type="submit" id="createUserButton" value="CREATE USER"><br><br>
+    <input type="submit" id="weightButton" value="CHANGE WEIGHT"><br><br>
+    <input type="submit" id="updateActivityButton" value="UPDATE ACTIVITY"><br><br>
+    <input type="submit" id="reportButton" value="VIEW REPORT"><br><br>
+    <input type="submit" id="previousButton" value="MONTH"><br><br>
+    <script>
+        function returnUserWeight(){
+            var newWeight = $("#userWeight").val();
+            var uid = $("#usrid").val();
+            $.get('/UpdateWeight' , {userid : uid , weight : newWeight});
+        }
+
+        function returnCreateUser(){
+            var newWeight = $("#userWeight").val();
+            var uid = $("#usrid").val();
+            $.get('/createUser' , {userid : uid , weight : newWeight});
+        }
+
+        function returnUserActivity(){
+            var mins = $("#userMin").val();
+            var uid = $("#usrid").val();
+            $.get('/updateActivity' , {userid : uid , minutes : mins});
+        }
+
+        function returnUserReport(){
+            var uid = $("#usrid").val();
+            $.get('/userReport' , {userid : uid});
+        }
+
+        function returnPreviousReport(){
+            var uid = $("#usrid").val();
+            var mon = $("#prevMonth").val();
+            $.get('/prevUserReport' , {userid : uid , month:mon});
+        }
+        function returnReset(){
+            var uid = $("#usrid").val();
+            $.get('/reset' , {userid : uid});
+        }
+
+
+        $("#weightButton").click(function(){ 
+            returnUserWeight();
+        })
+        $("#createUserButton").click(function(){ 
+            returnCreateUser();
+        })
+        $("#updateActivityButton").click(function(){ 
+            returnUserActivity();
+        })
+        $("#reportButton").click(function(){
+            returnUserReport();
+        })
+        $("#resetButton").click(function(){
+            returnUserReport();
+        })
+        $("#previousButton").click(function(){
+            returnPreviousReport();
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+-pubspec.yml file
+add cupertino_icons:
+	http:
+(click pkg get)
+
+
+-create a new dart(dot) file and name it api.dart
+import 'package:http/http/http.dart' as http
+
+Future Getdata(url) async{
+	http.Response Response = await http.get(url);
+	return Response.body
+}
+
+
+-main.dart
+import 'api.dart';
+import 'dart:convert'
+
+url = 'http://127.0.0.1:5000'
+(for whichever image they choose, append /getvalue and pass asana name as query(+'/getvalue'+asana.tostring()))
+
+wherever they tap
+on tap: ()async{
+	Data = await Getdata(url);
+	var DecodedData = jsonDecode(Data);
+	setstate( () {
+	 QueryText = DecodedData['Query'] //'avgerr' in our case
+	});
+}
+(initialize Data,QueryText in the beginning)
+
+
+
+
+install python_jwt
+install sseclient
+install Crypto(in this, it might get saved as crypto and the subfolders will also have small letters, change the first letter to caps and publickey-PublicKey)
